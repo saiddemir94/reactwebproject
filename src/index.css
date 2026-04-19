@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", sans-serif;
+  --font-serif: "Playfair Display", serif;
+}
+
+:root {
+  --color-bg: #f5f0e7;
+  --color-surface: rgba(255, 252, 247, 0.86);
+  --color-surface-strong: #fffdfa;
+  --color-surface-soft: #f7efe3;
+  --color-border: #d8cab5;
+  --color-text: #201a14;
+  --color-text-soft: #655847;
+  --color-text-muted: #8c7d69;
+  --color-cta: #f8f1e7;
+  --color-cta-hover: #f0e5d6;
+  --color-cta-soft: #f8f1e7;
+  --color-cta-soft-hover: #f0e5d6;
+  --color-cta-border: #d8cab5;
+  --color-accent: #aa6431;
+  --color-accent-strong: #875026;
+  --color-accent-soft: #f4e3d2;
+  --color-danger-soft: #fce7e7;
+  --color-danger: #a13030;
+  font-family: "Manrope", sans-serif;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top left, rgba(170, 100, 49, 0.16), transparent 26%),
+    radial-gradient(circle at 85% 20%, rgba(244, 227, 210, 0.85), transparent 18%),
+    linear-gradient(180deg, #fdfaf5 0%, var(--color-bg) 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--color-text);
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(184, 106, 46, 0.18);
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-md border shadow-sm;
+    border-color: var(--color-border);
+    background: var(--color-surface);
+    box-shadow:
+      0 20px 48px rgba(46, 34, 20, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(18px);
+  }
+
+  .title-serif {
+    font-family: "Playfair Display", serif;
+    color: var(--color-text);
+    letter-spacing: -0.035em;
+  }
+
+  .kicker {
+    @apply text-[11px] font-semibold uppercase;
+    color: var(--color-accent);
+    letter-spacing: 0.32em;
+  }
+
+  .text-soft {
+    color: var(--color-text-soft);
+  }
+
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition;
+    min-height: 48px;
+    border: 1px solid var(--color-cta-border);
+    background: var(--color-cta);
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-cta-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(46, 34, 20, 0.06);
+  }
+
+  .btn-primary:focus,
+  .btn-primary:focus-visible,
+  .btn-primary:active {
+    outline: none;
+    background: var(--color-cta);
+    color: var(--color-text);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border px-5 py-3 text-sm font-semibold transition;
+    min-height: 48px;
+    border-color: var(--color-cta-border);
+    background: var(--color-cta-soft);
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-cta-soft-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(46, 34, 20, 0.05);
+  }
+
+  .btn-secondary:focus,
+  .btn-secondary:focus-visible,
+  .btn-secondary:active {
+    outline: none;
+    background: var(--color-cta-soft);
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-semibold transition;
+    min-height: 42px;
+    border-color: #efc5c5;
+    background: #fff7f7;
+    color: var(--color-danger);
+    cursor: pointer;
+  }
+
+  .btn-danger:hover {
+    background: var(--color-danger-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(161, 48, 48, 0.08);
+  }
+
+  .field-input {
+    @apply w-full rounded-md border px-4 py-3 outline-none transition;
+    min-height: 52px;
+    border-color: var(--color-border);
+    background: var(--color-surface-strong);
+    color: var(--color-text);
+  }
+
+  .field-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .field-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(184, 106, 46, 0.08);
+  }
+
+  .tab-button {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-3 text-sm font-semibold transition;
+    min-height: 44px;
+    border: 1px solid transparent;
+    color: var(--color-text-soft);
+    cursor: pointer;
+  }
+
+  .tab-button:hover {
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--color-text);
+  }
+
+  .tab-button:focus,
+  .tab-button:focus-visible,
+  .tab-button:active {
+    outline: none;
+  }
+
+  .tab-button-active {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-3 text-sm font-semibold;
+    min-height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: var(--color-surface-strong);
+    color: var(--color-text);
+    box-shadow: 0 8px 18px rgba(39, 28, 17, 0.08);
+    cursor: pointer;
+  }
+
+  .nav-pill {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition;
+    min-height: 42px;
+  }
+
+  .nav-pill:hover {
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--color-text);
+  }
+
+  .nav-pill-active {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold;
+    min-height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--color-text);
+    box-shadow: 0 10px 26px rgba(39, 28, 17, 0.08);
+  }
+}
